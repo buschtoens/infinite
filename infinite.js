@@ -22,6 +22,9 @@ module.exports = Infinite;
  */
 
 function Infinite(el, loadCallback, margin) {
+  if(!(this instanceof Infinite))
+    return new Infinite(el, loadCallback, margin);
+
   this.el = el;
   if(typeof loadCallback == "function")
     this.on("load", bind(this.el, loadCallback));
