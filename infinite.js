@@ -24,7 +24,7 @@ module.exports = Infinite;
 function Infinite(el, loadCallback, margin) {
   this.el = el;
   if(typeof loadCallback == "function")
-    this.on("load", bind(loadCallback, this.el));
+    this.on("load", bind(this.el, loadCallback));
   
   this.margin = typeof margin == "number" ? margin : 300;
   this.iteration = 0;
