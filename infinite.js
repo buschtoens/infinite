@@ -49,21 +49,21 @@ Emitter(Infinite.prototype);
  * @api public
  */
 
-Infinite.prototype.onscroll = debounce(function() {
+Infinite.prototype.onscroll = function() {
   if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
     this.load();
   }
-}, 100, true);
+};
 
 /**
- * Force a load.
+ * Issue a debounced load.
  *
  * @api public
  */
 
-Infinite.prototype.load = function() {
+Infinite.prototype.load = debounce(function() {
   this.emit("load", this.iteration++);
-};
+}, 100, true);
 
 /**
  * Pause emitting `load` events.
