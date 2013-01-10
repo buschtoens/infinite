@@ -49,11 +49,11 @@ Emitter(Infinite.prototype);
  * @api public
  */
 
-Infinite.prototype.onscroll = function() {
+Infinite.prototype.onscroll = debounce(function() {
   if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
-    debounce(this.load, 100, true);
+    this.load();
   }
-};
+}, 100, true);
 
 /**
  * Force a load.
