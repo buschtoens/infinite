@@ -28,6 +28,7 @@ function Infinite(el, loadCallback, margin) {
   
   this.margin = typeof margin == "number" ? margin : 300;
   this.iteration = 0;
+  this.paused = false;
 
   // listen on scroll event
   this.events = events(el, this);
@@ -45,7 +46,7 @@ Emitter(Infinite.prototype);
  */
 
 Infinite.prototype.onscroll = function() {
-  if(!this.pause && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
+  if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
     this.pause();
     this.emit("load", this.iteration++, bind(this, this.resume));
   }
@@ -58,7 +59,7 @@ Infinite.prototype.onscroll = function() {
  */
 
 Infinite.prototype.pause = function() {
-  this.pause = true;
+  this.paused = true;
   this.emit("pause");
 };
 
@@ -69,6 +70,6 @@ Infinite.prototype.pause = function() {
  */
 
 Infinite.prototype.resume = function() {
-  this.pause = false;
+  this.paused = false;
   this.emit("resume");
 };
