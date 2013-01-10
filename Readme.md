@@ -12,7 +12,7 @@ $ component install silvinci/infinite
 ```javascript
 var infinite = require("infinite");
 
-infinite(document.querySelector("ul"), function(iteration, resume) {
+infinite(document.querySelector("ul"), function(iteration) {
   var self = this;
   request("/data?p=" + iteration, function(data) {
     var li = document.createElement("li")
@@ -20,8 +20,6 @@ infinite(document.querySelector("ul"), function(iteration, resume) {
     li.appendChild(text);
 
     self.appendChild(li);
-
-    resume();
   });
 });
 ```
@@ -40,13 +38,11 @@ infinite(document.querySelector("ul"), function(iteration, resume) {
   Manually issue a scrollevent, triggering `loadCallback`, if the
   scrollbar is in the margin or at the end.
 
-### Infinite.on("load", function(iteration, resume) {});
+### Infinite.on("load", function(iteration) {});
 
   Emitted each time the user scrolls in side the margin.
   The callback is called with `this` as `el` and an argument
   `iteration` which counts how often the callback was called (starting at 0).
-  No more load events are emitted, until `resume` or
-  `Infinite.resume()` gets called.
 
 ### Infinite.pause()
 
