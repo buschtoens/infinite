@@ -4,7 +4,8 @@
 
 var events = require("events")
   , Emitter = require("emitter")
-  , bind = require("bind");
+  , bind = require("bind")
+  , debounce = require("debounce");
 
 /**
  * Expose `Infinite`.
@@ -50,8 +51,18 @@ Emitter(Infinite.prototype);
 
 Infinite.prototype.onscroll = function() {
   if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
-    this.emit("load", this.iteration++);
+    debounce(this.load, 100, true);
   }
+};
+
+/**
+ * Force a load.
+ *
+ * @api public
+ */
+
+Infinite.prototype.load = function() {
+  this.emit("load", this.iteration++);
 };
 
 /**
