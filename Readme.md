@@ -10,15 +10,16 @@ $ component install silvinci/infinite
 ## Example
 
 ```javascript
-var Infinite = require("infinite");
+var infinite = require("infinite");
 
-new Infinite(document.querySelector("ul"), function(iteration, next) {
+infinite(document.querySelector("ul"), function(iteration, next) {
+  var self = this;
   request("/data?p=" + iteration, function(data) {
     var li = document.createElement("li")
       , text = document.createTextNode(data);
     li.appendChild(text);
 
-    this.appendChild(li);
+    self.appendChild(li);
 
     next();
   });
