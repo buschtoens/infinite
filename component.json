@@ -6,6 +6,7 @@
   "keywords": ["ui", "scroll", "scrolling", "dom", "ajax", "lazy loading"],
   "dependencies": {
     "component/events": "*",
+    "component/emitter": "*",
     "component/bind": "*"
   },
   "development": {},
