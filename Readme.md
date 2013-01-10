@@ -44,7 +44,7 @@ infinite(document.querySelector("ul"), function(iteration, next) {
 
   Emitted each time the user scrolls in side the margin.
   The callback is called with `this` as `el` and an argument
-  `iteration` which counts how often the callback was called.
+  `iteration` which counts how often the callback was called (starting at 0).
   No more load events are emitted, until `next` or
   `Infinite.resume()` gets called.
 
