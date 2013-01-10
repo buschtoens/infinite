@@ -1,5 +1,5 @@
 
-build: components infinite.js infinite.css
+build: components infinite.js
 	@component build --dev
 
 components: component.json
