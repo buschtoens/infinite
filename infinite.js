@@ -26,7 +26,7 @@ function Infinite(el, loadCallback, margin) {
   if(typeof loadCallback == "function")
     this.on("load", bind(this.el, loadCallback));
   
-  this.margin = typeof margin == "number" ? margin : 300;
+  this.margin = typeof margin == "number" ? margin : 0;
   this.iteration = 0;
   this.paused = false;
 

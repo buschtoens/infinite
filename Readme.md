@@ -10,7 +10,7 @@ $ component install silvinci/infinite
 
 ## API
 
-### Infinite(el, loadCallback, margin)
+### Infinite(el, loadCallback, [margin])
 
   Listen for scroll events on `el`. Call `loadCallback`, when the
   scrollbar of `el` hits the end. Optionally specify a `margin`
