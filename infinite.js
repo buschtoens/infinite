@@ -45,7 +45,29 @@ Emitter(Infinite.prototype);
  */
 
 Infinite.prototype.onscroll = function() {
-  if(this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
+  if(!this.pause && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
     this.emit("load", this.iteration++);
   }
+};
+
+/**
+ * Pause emitting `load` events.
+ *
+ * @api public
+ */
+
+Infinite.prototype.pause = function() {
+  this.pause = true;
+  this.emit("pause");
+};
+
+/**
+ * Resume emitting `load` events.
+ *
+ * @api public
+ */
+
+Infinite.prototype.resume = function() {
+  this.pause = false;
+  this.emit("resume");
 };
