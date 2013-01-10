@@ -10,25 +10,33 @@ $ component install silvinci/infinite
 
 ## API
 
-### Infinite(el, loadCallback)
+### Infinite(el, loadCallback, margin)
 
-  Initialize infinite scoll instance on `el`, which is a `DOMElement`.
-  `loadCallback` is a `Function` that gets called, everytime new content
-  is requested. It returns a `DOMElement` or an array of `DOMElement`s.
+  Listen for scroll events on `el`. Call `loadCallback`, when the
+  scrollbar of `el` hits the end. Optionally specify a `margin`
+  so that `loadCallback` gets called before the scrollbar hits
+  the end.
 
 ### Infinite.onscroll()
 
-  Manually issue a scrollevent, triggering a content load, if no other
-  load is currently active.
+  Manually issue a scrollevent, triggering `loadCallback`, if the
+  scrollbar is in the margin or at the end.
 
-### Infinite.load()
+### Infinite.on("load", function(iteration, next) {});
 
-  Force loading new content. Not recommended. Use `Infinite.onscroll()`
-  instead.
+  Emitted each time the user scrolls in side the margin.
+  The callback is called with `this` as `el` and an argument
+  `iteration` which counts how often the callback was called.
+  No more load events are emitted, until `next` or
+  `Infinite.resume()` gets called.
 
-### Infinite.stop()
+### Infinite.pause()
 
-  Stop loading new content on scroll events.
+  Stop emitting `load` events.
+
+### Infinite.resume()
+
+  Resume emitting `load` events.
 
 ## License
 
