@@ -50,8 +50,7 @@ Emitter(Infinite.prototype);
 
 Infinite.prototype.onscroll = function() {
   if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
-    this.pause();
-    this.emit("load", this.iteration++, bind(this, this.resume));
+    this.emit("load", this.iteration++);
   }
 };
 
