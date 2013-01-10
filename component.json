@@ -8,7 +8,7 @@
     "component/events": "*",
     "component/emitter": "*",
     "component/bind": "*",
-    "matthewmueller/debounce": "*"
+    "matthewmueller/throttle": "*"
   },
   "development": {},
   "license": "MIT",

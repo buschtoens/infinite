@@ -5,7 +5,7 @@
 var events = require("events")
   , Emitter = require("emitter")
   , bind = require("bind")
-  , debounce = require("debounce");
+  , throttle = require("throttle");
 
 /**
  * Expose `Infinite`.
@@ -31,6 +31,7 @@ function Infinite(el, loadCallback, margin) {
     this.on("load", bind(this.el, loadCallback));
   
   this.margin = typeof margin == "number" ? margin : 0;
+  this.throttle = 100;
   this.iteration = 0;
   this.paused = false;
 
@@ -61,9 +62,9 @@ Infinite.prototype.onscroll = function() {
  * @api public
  */
 
-Infinite.prototype.load = debounce(function() {
+Infinite.prototype.load = throttle(function() {
   this.emit("load", this.iteration++);
-}, 100, true);
+}, this.throttle);
 
 /**
  * Pause emitting `load` events.
