@@ -31,7 +31,6 @@ function Infinite(el, loadCallback, margin) {
     this.on("load", bind(this.el, loadCallback));
   
   this.margin = typeof margin == "number" ? margin : 0;
-  this.throttle = 100;
   this.iteration = 0;
   this.paused = false;
 
@@ -64,7 +63,7 @@ Infinite.prototype.onscroll = function() {
 
 Infinite.prototype.load = throttle(function() {
   this.emit("load", this.iteration++);
-}, this.throttle);
+}, 100);
 
 /**
  * Pause emitting `load` events.
