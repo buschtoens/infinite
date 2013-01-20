@@ -2,9 +2,8 @@
 
   Scroll infinitely and get new content from a callback function
   
-  `infinite` listens on the `scroll` event. So it only works on
-  overflowing elements. An alternative `mousewheel` event may be
-  implemented soon.
+  By default `infinite` listens on the `scroll` event. If the element
+  has no scrollbars, `infinite` will run on each `mousewheel` event.
 
 ## Installation
 
