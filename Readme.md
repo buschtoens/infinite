@@ -3,8 +3,8 @@
   Scroll infinitely and get new content from a callback function
   
   `infinite` listens on the `scroll` event. So it only works on
-  overflowing elements. An alternative `mousewheel` may be implemented
-  soon.
+  overflowing elements. An alternative `mousewheel` event may be
+  implemented soon.
 
 ## Installation
 
@@ -44,7 +44,7 @@ infinite(document.querySelector("ul"), function(iteration) {
 
 ### Infinite.on("load", function(iteration) {});
 
-  Emitted each time the user scrolls in side the margin.
+  Emitted each time the user scrolls inside the margin.
   The callback is called with `this` as `el` and an argument
   `iteration` which counts how often the callback was called (starting at 0).
 
