@@ -35,12 +35,38 @@ function Infinite(el, loadCallback, margin) {
   this.paused = false;
 
   // listen on scroll event
-  this.events = events(el, this);
-  this.events.bind("scroll");
+  this.bind(this.el);
 }
 
 // Inherit from Emitter
 Emitter(Infinite.prototype);
+
+/**
+ * Bind to a DOMElement.
+ *
+ * @param {Object} el
+ * @api public
+ */
+
+Infinite.prototype.bind = function(el) {
+  if(el) this.el = el;
+
+  this.unbind();
+  this.events = events(this.el, this);
+
+  if(this.el.scrollHeight > this.el.clientHeight) this.events.bind("scroll");
+  else this.events.bind("mousewheel");
+};
+
+/**
+ * Unbind from the DOMElement.
+ *
+ * @api public
+ */
+
+Infinite.prototype.unbind = function() {
+  if(this.events) this.events.unbind();
+};
 
 /**
  * Handle a scroll event.
@@ -50,9 +76,19 @@ Emitter(Infinite.prototype);
  */
 
 Infinite.prototype.onscroll = function() {
-  if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin) {
+  if(!this.paused && this.el.scrollHeight <= this.el.scrollTop + this.el.clientHeight + this.margin)
     this.load();
-  }
+};
+
+/**
+ * Handle a mousewheel event.
+ *
+ * @param {Object} event
+ * @api public
+ */
+
+Infinite.prototype.onmousewheel = function() {
+  if(!this.paused) this.load();
 };
 
 /**
