@@ -56,6 +56,8 @@ Infinite.prototype.bind = function(el) {
 
   if(this.el.scrollHeight > this.el.clientHeight) this.events.bind("scroll");
   else this.events.bind("mousewheel");
+
+  this.resume();
 };
 
 /**
@@ -65,6 +67,7 @@ Infinite.prototype.bind = function(el) {
  */
 
 Infinite.prototype.unbind = function() {
+  this.pause();
   if(this.events) this.events.unbind();
 };
 
@@ -103,7 +106,7 @@ Infinite.prototype.onmousewheel = function(e) {
 Infinite.prototype.load = throttle(function(i) {
   var i = typeof i == "number" ? i : 1;
   this.iteration = this.iteration + i;
-  
+
   this.emit("load", this.iteration, i);
 }, 100);
 
