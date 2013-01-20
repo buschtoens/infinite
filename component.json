@@ -2,7 +2,7 @@
   "name": "infinite",
   "repo": "silvinci/infinite",
   "description": "Scroll infinitely and get new content from a callback function",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": ["ui", "scroll", "scrolling", "dom", "ajax", "lazy loading"],
   "dependencies": {
     "component/events": "*",

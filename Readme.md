@@ -42,11 +42,12 @@ infinite(document.querySelector("ul"), function(iteration) {
   Manually issue a scrollevent, triggering `loadCallback`, if the
   scrollbar is in the margin or at the end.
 
-### Infinite.on("load", function(iteration) {});
+### Infinite.on("load", function(iteration, delta) {});
 
   Emitted each time the user scrolls inside the margin.
-  The callback is called with `this` as `el` and an argument
-  `iteration` which counts how often the callback was called (starting at 0).
+  The callback is called with `this` as `el` and the arguments
+  `iteration` which counts how often the callback was called (starting at `0`)
+  and `delta` which returns the delta to the previous state (`-1` or `1`).
 
 ### Infinite.pause()
 

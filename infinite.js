@@ -87,8 +87,11 @@ Infinite.prototype.onscroll = function() {
  * @api public
  */
 
-Infinite.prototype.onmousewheel = function() {
-  if(!this.paused) this.load();
+Infinite.prototype.onmousewheel = function(e) {
+  if(!this.paused) {
+    if(e.wheelDelta > 0) this.load(-1);
+    else this.load(1);
+  }
 };
 
 /**
@@ -97,8 +100,11 @@ Infinite.prototype.onmousewheel = function() {
  * @api public
  */
 
-Infinite.prototype.load = throttle(function() {
-  this.emit("load", this.iteration++);
+Infinite.prototype.load = throttle(function(i) {
+  var i = typeof i == "number" ? i : 1;
+  this.iteration = this.iteration + i;
+  
+  this.emit("load", this.iteration, i);
 }, 100);
 
 /**
