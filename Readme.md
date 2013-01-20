@@ -57,6 +57,15 @@ infinite(document.querySelector("ul"), function(iteration) {
 
   Resume emitting `load` events.
 
+### Infinite.bind(element)
+
+  Listen for events on the given `element`. Will unregister all events from an
+  element that may have been registered previously.
+
+### Infinite.unbind()
+
+  Unbind from the event, virtually deconstructing this instance of `Infinite`.
+
 ## License
 
   MIT
