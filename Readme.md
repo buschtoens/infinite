@@ -1,6 +1,10 @@
 # infinite
 
   Scroll infinitely and get new content from a callback function
+  
+  `infinite` listens on the `scroll` event. So it only works on
+  overflowing elements. An alternative `mousewheel` may be implemented
+  soon.
 
 ## Installation
 
