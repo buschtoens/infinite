@@ -1,5 +1,4 @@
-# infinite
-
+# infinite ![Bitdeli](https://d2weczhvl823v0.cloudfront.net/silvinci/infinite/trend.png)
   Scroll infinitely and get new content from a callback function
   
   By default `infinite` listens on the `scroll` event. If the element
